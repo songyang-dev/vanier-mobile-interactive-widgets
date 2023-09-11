@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// A widget wrapper to simplify building a text field
 class ShortTextField extends StatelessWidget {
   const ShortTextField({
     super.key,
@@ -10,6 +11,8 @@ class ShortTextField extends StatelessWidget {
 
   final TextEditingController textController;
   final String label;
+
+  /// The function to collect data
   final void Function() onSubmitted;
 
   @override

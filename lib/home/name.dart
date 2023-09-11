@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../services/profile_info.dart';
 import '../shared/shared.dart';
 
+/// This widget is stateful to prevent data loss during hot reloading.
+/// It can also be stateless.
 class NameFields extends StatefulWidget {
   const NameFields({
     super.key,
@@ -15,10 +17,14 @@ class NameFields extends StatefulWidget {
   State<NameFields> createState() => _NameFieldsState();
 }
 
+/// The widget holding both input fields.
 class _NameFieldsState extends State<NameFields> {
+  /// These two controllers are to capture the text data.
   final TextEditingController _firstNameController = TextEditingController();
   final TextEditingController _lastNameController = TextEditingController();
 
+  /// This is a function that collects the data from the controllers.
+  /// It is called by the TextField's callbacks.
   void _submitData() {
     widget.profileInfo.firstName = _firstNameController.text;
     widget.profileInfo.lastName = _lastNameController.text;

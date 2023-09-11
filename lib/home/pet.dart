@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../services/pets.dart';
 import '../services/profile_info.dart';
 
+/// Widget holding the group of radio buttons
 class PetChoices extends StatefulWidget {
   const PetChoices({super.key, required this.profileInfo});
 

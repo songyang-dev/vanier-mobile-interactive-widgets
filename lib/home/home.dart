@@ -16,11 +16,13 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
+/// The widget that lays out the form
 class PersonalForm extends StatelessWidget {
   PersonalForm({
     super.key,
   });
 
+  /// The data model
   final profileInfo = ProfileInfo();
 
   @override
