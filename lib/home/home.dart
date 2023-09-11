@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../services/profile_info.dart';
 import 'name.dart';
 import 'pet.dart';
 
@@ -10,23 +11,17 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('My Profile')),
-      body: const PersonalForm(),
+      body: PersonalForm(),
     );
   }
 }
 
-class PersonalForm extends StatefulWidget {
-  const PersonalForm({
+class PersonalForm extends StatelessWidget {
+  PersonalForm({
     super.key,
   });
 
-  @override
-  State<PersonalForm> createState() => _PersonalFormState();
-}
-
-class _PersonalFormState extends State<PersonalForm> {
-  final _firstNameController = TextEditingController();
-  final _lastNameController = TextEditingController();
+  final profileInfo = ProfileInfo();
 
   @override
   Widget build(BuildContext context) {
@@ -46,9 +41,7 @@ class _PersonalFormState extends State<PersonalForm> {
                     style: Theme.of(context).textTheme.headlineMedium,
                   ),
                 ),
-                NameFields(
-                    firstNameController: _firstNameController,
-                    lastNameController: _lastNameController),
+                NameFields(profileInfo: profileInfo),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: Text(
@@ -56,7 +49,19 @@ class _PersonalFormState extends State<PersonalForm> {
                     style: Theme.of(context).textTheme.headlineSmall,
                   ),
                 ),
-                const PetChoices(),
+                PetChoices(
+                  profileInfo: profileInfo,
+                ),
+                ElevatedButton.icon(
+                  onPressed: () {
+                    // check if the profile info is properly received
+                    debugPrint(profileInfo.firstName);
+                    debugPrint(profileInfo.lastName);
+                    debugPrint(profileInfo.pet?.name);
+                  },
+                  icon: const Icon(Icons.check),
+                  label: const Text("Confirm"),
+                )
               ],
             ),
           ],

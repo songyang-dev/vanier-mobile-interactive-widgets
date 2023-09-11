@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
-enum Pets { dog, cat, other, none }
+import '../services/pets.dart';
+import '../services/profile_info.dart';
 
 class PetChoices extends StatefulWidget {
-  const PetChoices({super.key});
+  const PetChoices({super.key, required this.profileInfo});
+
+  final ProfileInfo profileInfo;
 
   @override
   State<PetChoices> createState() => _PetChoicesState();
@@ -24,6 +27,7 @@ class _PetChoicesState extends State<PetChoices> {
             onChanged: (Pets? value) {
               setState(() {
                 _selectedPet = value;
+                widget.profileInfo.pet = value!;
               });
             },
           ),
@@ -36,6 +40,7 @@ class _PetChoicesState extends State<PetChoices> {
             onChanged: (Pets? value) {
               setState(() {
                 _selectedPet = value;
+                widget.profileInfo.pet = value!;
               });
             },
           ),
@@ -48,6 +53,7 @@ class _PetChoicesState extends State<PetChoices> {
             onChanged: (Pets? value) {
               setState(() {
                 _selectedPet = value;
+                widget.profileInfo.pet = value!;
               });
             },
           ),
@@ -60,6 +66,7 @@ class _PetChoicesState extends State<PetChoices> {
             onChanged: (Pets? value) {
               setState(() {
                 _selectedPet = value;
+                widget.profileInfo.pet = value!;
               });
             },
           ),
